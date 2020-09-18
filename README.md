@@ -1,4 +1,4 @@
-# min-app
+# Låtify Proof of Concept
 
 ## Project setup
 ```
