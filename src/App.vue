@@ -1,17 +1,22 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <Header msg="Låtify"/>
+    <Paster/>
+    <Player/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Header from './components/Header.vue'
+import Paster from './components/Paster.vue'
+import Player from './components/Player.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    Header,
+    Paster,
+    Player,
   }
 }
 </script>
@@ -22,7 +27,12 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: #f1f1f1;
   margin-top: 60px;
+}
+body {
+  padding: 0;
+  margin: 0;
+  background-color: #333;
 }
 </style>
