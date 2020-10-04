@@ -1,4 +1,4 @@
-# Låtify Proof of Concept
+# Låtify
 
 ## Project setup
 ```
