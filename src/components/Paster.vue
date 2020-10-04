@@ -14,7 +14,6 @@ export default {
     paste(e){
       var item = document.createElement("div");
       if(document.getElementsByClassName("entry").length % 2 == 0){
-        console.log("hello");
         item.classList.add("odd");
       }
       item.classList.add("entry");

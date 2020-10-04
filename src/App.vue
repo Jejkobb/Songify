@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <Header msg="Låtify"/>
+    <youtube style="display:none" :video-id="videoID" :playerVars="{autoplay: 1}" @ready="ready"></youtube>
     <Paster/>
     <Player/>
   </div>
@@ -17,8 +18,20 @@ export default {
     Header,
     Paster,
     Player,
+  },
+  data() {
+    return {
+      videoID: "T9QXsopqOpA"
+    }
+  },
+  methods: {
+    ready (event) {
+      this.player = event.target;
+    },
   }
 }
+
+
 </script>
 
 <style>

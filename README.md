@@ -5,6 +5,11 @@
 npm install
 ```
 
+## Installera också det här: https://github.com/kaorun343/vue-youtube-embed
+```
+npm i -S vue-youtube-embed
+```
+
 ### Compiles and hot-reloads for development
 ```
 npm run serve
