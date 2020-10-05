@@ -5,6 +5,7 @@
 
 
       <input @change="paste" type="text" placeholder="Paste YouTube URL here...">
+      
     
     <center id="wrapper">
 
@@ -46,7 +47,7 @@
 export default {
   name: 'Paster',
   props:{
-    genre: Number
+    genre: Number,
   },
   methods: {
     paste(e){
@@ -58,7 +59,6 @@ export default {
       item.innerHTML = e.target.value;
       document.getElementById("wrapper").prepend(item);
       e.target.value = "";
-     
     }
   }
 }

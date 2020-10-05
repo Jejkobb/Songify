@@ -3,7 +3,7 @@
     <Header msg="Låtify"/>
     <youtube style="display:none" :video-id="videoID" :playerVars="{autoplay: 1}" @ready="ready"></youtube>
     <List/>
-    <Paster :genre="this.genre"/>
+    <Paster :genre="this.genre" :songs="this.songs"/>
     
     <Player :genre="this.genre"/>
   </div>
@@ -26,7 +26,8 @@ export default {
   data() {
     return {
       videoID: "T9QXsopqOpA",
-      genre: 0
+      genre: 0,
+      songs: ""
     }
   },
   methods: {

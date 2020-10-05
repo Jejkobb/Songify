@@ -3,22 +3,22 @@
 
   <div class="list">
         <ul>
-            <a href="#">
+            <a href="#" id="que">
                 <li @click="changeGenre(0)">
                Yuor Queue
            </li>
             </a>
-           <a href="#">
+           <a href="#" id="popular">
                 <li @click="changeGenre(1)">
                Popular
            </li>
            </a>
-           <a href="#">
+           <a href="#" id="rock">
                 <li @click="changeGenre(2)">
                Rock
            </li>
            </a>
-           <a href="#">
+           <a href="#" id="rap">
 
            <li @click="changeGenre(3)">
                Rap
@@ -53,6 +53,7 @@ li{
     font-family: 'Bebas Neue', cursive;
     list-style-type: none;
     position: sticky;
+    margin: 1em;
 }
 .list{
     display: block;
@@ -78,5 +79,18 @@ a:active {
 }
 center{
     padding-left: 0em;
+}
+
+#que{
+    color: #ffffff;
+}
+#popular{
+    color: #ff7bac;
+}
+#rock{
+    color: #7ac943;
+}
+#rap{
+    color: #3fa9f5;
 }
 </style>

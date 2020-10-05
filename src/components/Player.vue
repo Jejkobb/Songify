@@ -1,5 +1,8 @@
 <template>
   <div class="footer">
+    <h2>
+      Now playing: {{songTitle}}
+    </h2>
     <img id="prev" @click="prevSong(currentSong,genre,Songs)" src="../assets/prev.png">
     <img v-if="!playing" @click="toggleUrl" id="play" src="../assets/play.png">
     <img v-else @click="toggleUrl" id="pause" src="../assets/pause.png">
@@ -8,6 +11,7 @@
 </template>
 
 <script>
+var getYoutubeTitle = require('get-youtube-title')
 export default {
   name: 'Player',
   props:{
@@ -19,12 +23,14 @@ export default {
       playing: false,
       currentSong:0 ,
       currentGenre:0,
+      songTitle: "Title",
       Songs: [
-        ["4NRXx6U8ABQ","GrAchTdepsU","YH9Nwa0RvO8","l0U7SxXHkPY"],
-        ["UNZqm3dxd2w","xpVfcZ0ZcFM","DRS_PpOrUZ4","U9BwWKXjVaI"],
-        ["SLsTskih7_I","UceaB4D0jpo","ba7mB8oueCY","ApXoWvfEYVU"],
-        ["w2Ov5jzm3j8","r_0JjYUe5jo","8CdcCD5V-d8","NQbkGDoD7B0"]
-      ]
+        ["4NRXx6U8ABQ","GrAchTdepsU","YH9Nwa0RvO8","l0U7SxXHkPY"], //your que
+        ["UNZqm3dxd2w","xpVfcZ0ZcFM","DRS_PpOrUZ4","U9BwWKXjVaI"], //popular
+        ["SLsTskih7_I","UceaB4D0jpo","ba7mB8oueCY","ApXoWvfEYVU"], //rock
+        ["w2Ov5jzm3j8","r_0JjYUe5jo","8CdcCD5V-d8","NQbkGDoD7B0"]  // rap
+      ],
+      customList: []
     }
   },
   methods: {
@@ -33,27 +39,41 @@ export default {
     },
     nextSong: function(currentSong,currentGenre,Songs){
       this.currentSong +=1;
-      console.log("currentSOng: " + currentSong + " currentGenre: " + currentGenre);
-      console.log("called form NEXT");
 
       
       this.vidoeID = Songs[currentGenre][this.currentSong];
 
 
       this.$root.$emit('changeSong', this.vidoeID);
+      this.getTitle(this.vidoeID);
     },
     prevSong: function(currentSong,currentGenre,Songs){
        this.currentSong -=1;
-      console.log("currentSOng: " + currentSong + " currentGenre: " + currentGenre);
-      console.log("called form PREV");
 
      
       this.vidoeID = Songs[currentGenre][this.currentSong];
 
 
       this.$root.$emit('changeSong', this.vidoeID);
+      this.getTitle(this.vidoeID);
+    },
+    getTitle: function (vidoeID){
+      //TODO
+
+        getYoutubeTitle(vidoeID, function (err, title) {
+             //Läser in video titeln men skriver inte ut
+             
+
+              //alert(title); <-- fungerar och visar rätt låt
+              console.log("Detta är titteln: " + title);
+              
+            })
+     
     }
+    
+
   }
+
 }
 </script>
 
@@ -84,5 +104,8 @@ img:active {
 }
 #prev, #next {
   margin: 24px;
+}
+h2{
+  display: flex;
 }
 </style>

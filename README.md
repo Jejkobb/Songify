@@ -8,7 +8,13 @@ npm install
 ## Installera också det här: https://github.com/kaorun343/vue-youtube-embed
 ```
 npm i -S vue-youtube-embed
+
 ```
+## Simpel youtube api att få video titlar
+```
+npm install get-youtube-title
+```
+
 
 ### Compiles and hot-reloads for development
 ```
