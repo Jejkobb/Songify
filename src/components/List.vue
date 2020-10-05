@@ -5,7 +5,7 @@
         <ul>
             <a href="#" id="que">
                 <li @click="changeGenre(0)">
-               Yuor Queue
+               Your Queue
            </li>
             </a>
            <a href="#" id="popular">

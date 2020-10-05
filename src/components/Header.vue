@@ -24,4 +24,14 @@ export default {
 .text {
   display:inline-block;
 }
+
+/* Responsivity */
+@media (max-width:599px) {
+  .logo {
+    width: 46px;
+  }
+  .text {
+    font-size: 300%;
+  }
+}
 </style>
