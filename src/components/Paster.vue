@@ -1,15 +1,53 @@
 <template>
   <div>
-    <input @change="paste" type="text" placeholder="Paste YouTube URL here...">
+    <center>
+    <div v-show="this.genre == 0" id="input">
+
+
+      <input @change="paste" type="text" placeholder="Paste YouTube URL here...">
+    
     <center id="wrapper">
 
     </center>
+    </div>
+    
+          
+            <div v-show="this.genre == 1">
+              <div class="entry odd">
+              <p>Popular låt 1</p>
+            </div>
+            <div class="entry">
+              <p>Popular låt 2</p>
+            </div>
+            </div>
+            <div v-show="this.genre == 2">
+              <div class="entry odd">
+              <p>Rock låt 1</p>
+            </div>
+            <div class="entry">
+              <p>Rock låt 2</p>
+            </div>
+            </div>
+            <div v-show="this.genre == 3">
+              <div class="entry odd">
+              <p>Rap låt 1</p>
+            </div>
+            <div class="entry">
+              <p>Rap låt 2</p>
+            </div>
+            </div>
+          </center>
+    
   </div>
 </template>
 
 <script>
+
 export default {
   name: 'Paster',
+  props:{
+    genre: Number
+  },
   methods: {
     paste(e){
       var item = document.createElement("div");
@@ -20,6 +58,7 @@ export default {
       item.innerHTML = e.target.value;
       document.getElementById("wrapper").prepend(item);
       e.target.value = "";
+     
     }
   }
 }
@@ -36,6 +75,7 @@ input {
   border-radius: 10px;
   border: solid 3px #111;
   margin-bottom: 4px;
+  margin-right: 35em;
 }
 input:focus{
   outline: 0;
