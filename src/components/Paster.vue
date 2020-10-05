@@ -51,6 +51,7 @@ export default {
   },
   methods: {
     paste(e){
+      var tmpString  ="";
       var item = document.createElement("div");
       if(document.getElementsByClassName("entry").length % 2 == 0){
         item.classList.add("odd");
@@ -58,7 +59,12 @@ export default {
       item.classList.add("entry");
       item.innerHTML = e.target.value;
       document.getElementById("wrapper").prepend(item);
+      tmpString = item.innerHTML.slice(32,45);
+      console.log("tmpString: " + tmpString);
       e.target.value = "";
+
+      this.$root.$emit('changeSong', tmpString);
+
     }
   }
 }
