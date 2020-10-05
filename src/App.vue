@@ -5,7 +5,7 @@
     <List/>
     <Paster :genre="this.genre"/>
     
-    <Player/>
+    <Player :genre="this.genre"/>
   </div>
 </template>
 
@@ -38,6 +38,11 @@ export default {
     this.$root.$on('changeGenreEvent', (genre) => { // here you need to use the arrow function
      this.genre = genre;
      console.log("this.genre: " + this.genre);
+    })
+
+    this.$root.$on('changeSong', (videoID) => { // here you need to use the arrow function
+     this.videoID = videoID;
+     console.log("this.videoID--: " + videoID);
     })
 }
 
