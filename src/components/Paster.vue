@@ -95,4 +95,13 @@ input:focus{
 .odd {
   background-color: #252525;
 }
+@media (max-width:599px) {
+  input {
+    width: 93%;
+    margin-right: 0;
+  }
+  .entry {
+    width: 93%;
+  }
+}
 </style>

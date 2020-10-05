@@ -28,10 +28,11 @@ export default {
 /* Responsivity */
 @media (max-width:599px) {
   .logo {
-    width: 46px;
+    top: 0px;
+    width: 28px;
   }
   .text {
-    font-size: 300%;
+    font-size: 200%;
   }
 }
 </style>
