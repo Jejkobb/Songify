@@ -67,6 +67,11 @@ export default {
         }
       }
     
+  },
+  mounted() {
+      if (document.body.clientWidth < 600){
+      this.showHide();
+      }
   }
 }
 </script>

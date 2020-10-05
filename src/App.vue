@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-    <Head />
     <Header msg="Låtify"/>
     <youtube style="display:none" :video-id="videoID" :playerVars="{autoplay: 1}" @ready="ready"></youtube>
     <List/>
@@ -11,7 +10,6 @@
 </template>
 
 <script>
-import Head from './components/Head.vue'
 import Header from './components/Header.vue'
 import Paster from './components/Paster.vue'
 import Player from './components/Player.vue'
@@ -20,7 +18,6 @@ import List from './components/List.vue'
 export default {
   name: 'App',
   components: {
-    Head,
     Header,
     Paster,
     List,
