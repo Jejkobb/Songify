@@ -6,6 +6,8 @@
     <Paster :genre="this.genre" :songs="this.songs"/>
     
     <Player :genre="this.genre"/>
+    <button @click="pause">pause</button>
+    <button @click="play">play</button>
   </div>
 </template>
 
@@ -25,7 +27,7 @@ export default {
   },
   data() {
     return {
-      videoID: "T9QXsopqOpA",
+      videoID: "",
       genre: 0,
       songs: ""
     }
@@ -33,6 +35,12 @@ export default {
   methods: {
     ready (event) {
       this.player = event.target;
+    },
+    pause () {
+      this.player.pauseVideo();
+    },
+    play () {
+      this.player.playVideo();
     }
   },
   mounted: function () { 
