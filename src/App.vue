@@ -79,6 +79,7 @@ export default {
     playSong(id){
       if(this.Songs[this.genre].length == 0){
         this.player.stopVideo();
+        this.playing = !this.playing;
         return;
       }
       this.videoID = this.Songs[this.genre][id];
