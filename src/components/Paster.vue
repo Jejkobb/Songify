@@ -43,13 +43,16 @@
 </template>
 
 <script>
-
+var getYoutubeTitle = require('get-youtube-title')
 export default {
   name: 'Paster',
   props:{
     genre: Number,
   },
   methods: {
+    changeTitle(title){
+      this.songTitle = title;
+    },
     paste(e){
       var tmpString  ="";
       var item = document.createElement("div");
@@ -59,9 +62,13 @@ export default {
       item.classList.add("entry");
       item.innerHTML = e.target.value;
       document.getElementById("wrapper").prepend(item);
-      tmpString = item.innerHTML.slice(32,45);
+      tmpString = e.target.value.slice(32,45);
       console.log("tmpString: " + tmpString);
+      console.log(e.value);
       e.target.value = "";
+      getYoutubeTitle(tmpString, (e, t) => {
+        item.innerHTML = t;
+      });
 
       this.$root.$emit('changeSong', tmpString);
 

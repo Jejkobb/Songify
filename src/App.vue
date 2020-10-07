@@ -5,17 +5,24 @@
     <List/>
     <Paster :genre="this.genre" :songs="this.songs"/>
     
-    <Player :genre="this.genre"/>
-    <button @click="pause">pause</button>
-    <button @click="play">play</button>
+    <!--<Player :genre="this.genre"/>-->
+    <div class="footer">
+      <h2 v-if="!playing">
+        Now playing: {{songTitle}}
+      </h2>
+      <img id="prev" src="./assets/prev.png">
+      <img v-if="playing" @click="toggleUrl" id="play" src="./assets/play.png">
+      <img v-else @click="toggleUrl" id="pause" src="./assets/pause.png">
+      <img id="next" src="./assets/next.png">
+    </div>
   </div>
 </template>
 
 <script>
 import Header from './components/Header.vue'
 import Paster from './components/Paster.vue'
-import Player from './components/Player.vue'
 import List from './components/List.vue'
+var getYoutubeTitle = require('get-youtube-title')
 
 export default {
   name: 'App',
@@ -23,24 +30,47 @@ export default {
     Header,
     Paster,
     List,
-    Player,
   },
   data() {
     return {
       videoID: "",
       genre: 0,
-      songs: ""
+      currentSong:0,
+      songs: "",
+      songTitle: "",
+      playing: true,
+      Songs: [
+        [], //your que
+        ["UNZqm3dxd2w","xpVfcZ0ZcFM","DRS_PpOrUZ4","U9BwWKXjVaI"], //popular
+        ["SLsTskih7_I","UceaB4D0jpo","ba7mB8oueCY","ApXoWvfEYVU"], //rock
+        ["w2Ov5jzm3j8","r_0JjYUe5jo","8CdcCD5V-d8","NQbkGDoD7B0"]  // rap
+      ]
     }
   },
   methods: {
     ready (event) {
       this.player = event.target;
     },
-    pause () {
-      this.player.pauseVideo();
+    toggleUrl(){
+      this.playing = !this.playing;
+      if(this.playing == false){
+        this.player.playVideo();
+      }else{
+        this.player.pauseVideo();
+      }
     },
-    play () {
+    changeTitle(title){
+      this.songTitle = title;
+    },
+    playSong(id){
+      this.videoID = this.Songs[this.genre, id];
+      this.currentSong = id;
+      console.log(this.Songs);
+      this.playing = false;
       this.player.playVideo();
+      getYoutubeTitle(this.videoID, (e, t) => {
+        this.changeTitle(t);
+      });
     }
   },
   mounted: function () { 
@@ -51,14 +81,17 @@ export default {
 
     this.$root.$on('changeSong', (videoID) => { // here you need to use the arrow function
      this.videoID = videoID;
+     this.Songs[0].push(videoID);
+     this.currentSong = 0;
+     console.log(this.Songs);
+     this.playing = false;
+     this.player.playVideo();
+     getYoutubeTitle(videoID, (e, t) => {
+       this.changeTitle(t);
+     });
      console.log("this.videoID--: " + videoID);
     })
-
-
-
-    
-}
-
+  }
 }
 
 
@@ -77,5 +110,31 @@ body {
   padding: 0;
   margin: 0;
   background-color: #333;
+}
+.footer {
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color: #555;
+   color: white;
+   text-align: center;
+}
+img {
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+img:hover {
+  transform: scale(1.1);
+}
+img:active {
+  transform: scale(0.9);
+}
+#play, #pause {
+  height: 54px;
+  margin: 12px;
+}
+#prev, #next {
+  margin: 24px;
 }
 </style>
