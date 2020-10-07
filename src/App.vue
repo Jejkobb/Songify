@@ -10,10 +10,10 @@
       <h2 v-if="!playing">
         Now playing: {{songTitle}}
       </h2>
-      <img id="prev" src="./assets/prev.png">
+      <img id="prev" @click="prev" src="./assets/prev.png">
       <img v-if="playing" @click="toggleUrl" id="play" src="./assets/play.png">
       <img v-else @click="toggleUrl" id="pause" src="./assets/pause.png">
-      <img id="next" src="./assets/next.png">
+      <img id="next" @click="next" src="./assets/next.png">
     </div>
   </div>
 </template>
@@ -62,20 +62,36 @@ export default {
     changeTitle(title){
       this.songTitle = title;
     },
+    prev(){
+      if(this.Songs[this.genre].length <= 1){
+        return;
+      }
+      this.currentSong = this.currentSong-1 < 0 ? this.Songs[this.genre].length-1 : this.currentSong-1;
+      this.playSong(this.currentSong);
+    },
+    next(){
+      if(this.Songs[this.genre].length <= 1){
+        return;
+      }
+      this.currentSong = this.Songs[this.genre].length > this.currentSong+1 ? this.currentSong+1 : 0;
+      this.playSong(this.currentSong);
+    },
     playSong(id){
-      this.videoID = this.Songs[this.genre, id];
+      this.videoID = this.Songs[this.genre][id];
       this.currentSong = id;
       console.log(this.Songs);
       this.playing = false;
       this.player.playVideo();
       getYoutubeTitle(this.videoID, (e, t) => {
-        this.changeTitle(t);
+        this.songTitle = t;
       });
     }
   },
   mounted: function () { 
     this.$root.$on('changeGenreEvent', (genre) => { // here you need to use the arrow function
      this.genre = genre;
+     this.currentSong = 0;
+     this.playSong(this.currentSong);
      console.log("this.genre: " + this.genre);
     })
 
