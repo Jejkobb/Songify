@@ -15,26 +15,44 @@
           
             <div v-show="this.genre == 1">
               <div class="entry odd">
-              <p>Popular låt 1</p>
+              <p>Drake - Nice For What</p>
             </div>
             <div class="entry">
-              <p>Popular låt 2</p>
+              <p>Roddy Ricch - The Box [Official Music Video]</p>
+            </div>
+            <div class="entry odd">
+              <p>Drake - God's Plan</p>
+            </div>
+            <div class="entry">
+              <p>Drake - In My Feelings</p>
             </div>
             </div>
             <div v-show="this.genre == 2">
               <div class="entry odd">
-              <p>Rock låt 1</p>
+              <p>Post Malone, Swae Lee - Sunflower (Spider-Man: Into the Spider-Verse)</p>
             </div>
             <div class="entry">
-              <p>Rock låt 2</p>
+              <p>Post Malone - White Iverson</p>
+            </div>
+            <div class="entry odd">
+              <p>Post Malone - rockstar ft. 21 Savage</p>
+            </div>
+            <div class="entry">
+              <p>Post Malone - "Goodbyes" ft. Young Thug (Rated R)</p>
             </div>
             </div>
             <div v-show="this.genre == 3">
               <div class="entry odd">
-              <p>Rap låt 1</p>
+              <p>SICKO MODE</p>
             </div>
             <div class="entry">
-              <p>Rap låt 2</p>
+              <p>Lil Nas X - Old Town Road (Official Movie) ft. Billy Ray Cyrus</p>
+            </div>
+            <div class="entry odd">
+              <p>Eminem - Godzilla ft. Juice WRLD (Dir. by @_ColeBennett_)</p>
+            </div>
+            <div class="entry">
+              <p>Eminem - Venom</p>
             </div>
             </div>
           </center>

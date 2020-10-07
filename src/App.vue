@@ -77,6 +77,10 @@ export default {
       this.playSong(this.currentSong);
     },
     playSong(id){
+      if(this.Songs[this.genre].length == 0){
+        this.player.stopVideo();
+        return;
+      }
       this.videoID = this.Songs[this.genre][id];
       this.currentSong = id;
       console.log(this.Songs);
@@ -90,7 +94,7 @@ export default {
   mounted: function () { 
     this.$root.$on('changeGenreEvent', (genre) => { // here you need to use the arrow function
      this.genre = genre;
-     this.currentSong = 0;
+     this.currentSong = this.Songs[this.genre].length-1;
      this.playSong(this.currentSong);
      console.log("this.genre: " + this.genre);
     })
